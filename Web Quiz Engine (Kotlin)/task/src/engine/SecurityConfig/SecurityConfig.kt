@@ -15,10 +15,19 @@ class SecurityConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
             .authorizeHttpRequests { auth ->
-                auth.anyRequest().permitAll() // Permite acceso a cualquier solicitud
+                auth.requestMatchers(HttpMethod.POST, "/api/register").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/register").hasRole("USER")
+                    .requestMatchers(HttpMethod.GET, "/api/quizzes").hasRole("USER")
+                    .requestMatchers(HttpMethod.GET, "/api/quizzes/**").hasRole("USER")
+                    .anyRequest().denyAll()
             }
             .httpBasic(Customizer.withDefaults()) // Si no necesitas autenticación básica, puedes eliminar esta línea
             .csrf { it.disable() } // Desactiva CSRF si no lo necesitas
             .build()
+    }
+
+    @Bean
+    fun passwordEncoder(): PasswordEncoder {
+        return BCryptPasswordEncoder()
     }
 }

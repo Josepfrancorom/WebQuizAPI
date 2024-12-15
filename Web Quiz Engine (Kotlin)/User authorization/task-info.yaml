@@ -27,6 +27,21 @@ files:
   - name: src/engine/SecurityConfig/SecurityConfig.kt
     visible: true
     learner_created: true
+  - name: src/engine/BusinessLayer/User.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/PersistenceLayer/UserRepository.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/BusinessLayer/UserService.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/PresentationLayer/UserController.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/BusinessLayer/UserAdapter.kt
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24909#comment
 status: Unchecked
 record: 5
