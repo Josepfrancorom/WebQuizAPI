@@ -48,4 +48,14 @@ class QuizController(private val quizService: QuizService) {
 
     }
 
+    @DeleteMapping("/{id}")
+    fun deleteQuizById(@PathVariable id:Long): ResponseEntity<Quiz>{
+        val response = quizService.deletQuizById(id)
+        if(response){
+            return ResponseEntity.noContent().build()
+        } else {
+            return ResponseEntity.notFound().build()
+        }
+    }
+
 }

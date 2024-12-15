@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository
 @Repository
 interface QuizRepository : CrudRepository<Quiz, Long> {
     fun findQuizById(id: Long): Quiz?
+    fun deleteQuizById(id: Long)
 }

@@ -1,6 +1,7 @@
 package engine.BusinessLayer
 
 import engine.PersistenceLayer.QuizRepository
+import jakarta.transaction.Transactional
 import org.springframework.stereotype.Service
 
 
@@ -12,6 +13,17 @@ class QuizService(private val quizRepository: QuizRepository) {
 
     fun saveQuiz(quizSave: Quiz): Quiz {
         return quizRepository.save(quizSave)
+    }
+
+    @Transactional
+    fun deletQuizById(id: Long): Boolean {
+        println("he entrado")
+        if(quizRepository.findQuizById(id) == null){
+            println("he entrado")
+            return false;
+        }
+        quizRepository.deleteQuizById(id)
+        return true
     }
 
     fun getAllQuizzes(): List<Quiz> {
