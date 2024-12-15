@@ -1,0 +1,32 @@
+type: edu
+files:
+  - name: src/engine/WebQuizEngine.kt
+    visible: true
+    learner_created: false
+  - name: src/resources/application.properties
+    visible: true
+    learner_created: false
+  - name: build.gradle
+    visible: true
+    learner_created: false
+  - name: src/engine/PresentationLayer/QuizController.kt
+    visible: true
+    learner_created: false
+  - name: src/engine/BusinessLayer/Quiz.kt
+    visible: true
+    learner_created: false
+  - name: test/WebQuizEngineTest.java
+    visible: false
+    learner_created: false
+  - name: src/engine/BusinessLayer/QuizService.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/PersistenceLayer/QuizRepository.kt
+    visible: true
+    learner_created: true
+feedback_link: https://hyperskill.org/learn/step/24908#comment
+status: Solved
+feedback:
+  message: Congratulations!
+  time: "Fri, 13 Dec 2024 20:53:52 UTC"
+record: 4
