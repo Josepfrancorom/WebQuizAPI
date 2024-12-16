@@ -20,14 +20,16 @@ class QuizService(private val quizRepository: QuizRepository, private val userSe
     }
 
     @Transactional
-    fun deletQuizById(id: Long): Boolean {
-        println("he entrado")
-        if(quizRepository.findQuizById(id) == null){
-            println("he entrado")
-            return false;
+    fun deletQuizById(id: Long): Int {
+        val quiz = quizRepository.findQuizById(id)
+        if(quiz == null){
+            return 1;
+        }
+        if(quiz.userId != userService.getAuthenticatedUserId()){
+            return 2;
         }
         quizRepository.deleteQuizById(id)
-        return true
+        return 3
     }
 
     fun getAllQuizzes(): List<Quiz> {
