@@ -42,6 +42,17 @@ files:
   - name: src/engine/BusinessLayer/UserAdapter.kt
     visible: true
     learner_created: true
+  - name: src/engine/PresentationLayer/Exception/GlobalExceptionHandler.kt
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24909#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #159
+
+    DELETE /api/quizzes/2 should respond with status code 403, responded: 204
+
+    Response body:
+  time: "Mon, 16 Dec 2024 11:13:15 UTC"
 record: 5

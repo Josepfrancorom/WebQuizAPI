@@ -6,12 +6,16 @@ import org.springframework.stereotype.Service
 
 
 @Service
-class QuizService(private val quizRepository: QuizRepository) {
+class QuizService(private val quizRepository: QuizRepository, private val userService: UserService) {
     fun findQuizById(id: Long): Quiz? {
         return quizRepository.findQuizById(id)
     }
 
     fun saveQuiz(quizSave: Quiz): Quiz {
+        val userId = userService.getAuthenticatedUserId()
+        if (userId != null) {
+            quizSave.userId = userId
+        }
         return quizRepository.save(quizSave)
     }
 

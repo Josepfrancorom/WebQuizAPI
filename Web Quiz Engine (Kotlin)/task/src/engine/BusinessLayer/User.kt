@@ -13,7 +13,9 @@ class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
 
-    var username: String = ""
+    var email: String = ""
+
     var password: String = ""
+
     var authority: String = ""
 }

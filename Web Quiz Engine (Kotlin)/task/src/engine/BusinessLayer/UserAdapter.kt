@@ -11,7 +11,7 @@ class UserAdapter(private val user: User) : UserDetails {
 
     override fun getPassword(): String = requireNotNull(user.password)
 
-    override fun getUsername(): String = requireNotNull(user.username)
+    override fun getUsername(): String = requireNotNull(user.email)
 
     override fun isAccountNonExpired(): Boolean = true
 
@@ -20,4 +20,6 @@ class UserAdapter(private val user: User) : UserDetails {
     override fun isCredentialsNonExpired(): Boolean = true
 
     override fun isEnabled(): Boolean = true
+
+    fun getId(): Long = user.id
 }

@@ -43,7 +43,6 @@ class QuizController(private val quizService: QuizService) {
     fun createNewQuiz(@RequestBody @Valid requestBody: Quiz): ResponseEntity<Quiz> {
 
         quizService.saveQuiz(requestBody)
-
         return ResponseEntity.ok(requestBody)
 
     }

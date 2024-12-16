@@ -15,9 +15,15 @@ class SecurityConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
             .authorizeHttpRequests { auth ->
-                auth.requestMatchers(HttpMethod.POST, "/api/register").permitAll()
+                auth
+                    .requestMatchers(HttpMethod.POST, "/api/register").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/register/hola").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/actuator/shutdown").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/register").hasRole("USER")
                     .requestMatchers(HttpMethod.GET, "/api/quizzes").hasRole("USER")
+                    .requestMatchers(HttpMethod.POST, "/api/quizzes").hasRole("USER")
+                    .requestMatchers(HttpMethod.POST, "/api/quizzes/**").hasRole("USER")
+                    .requestMatchers(HttpMethod.DELETE, "/api/quizzes/**").hasRole("USER")
                     .requestMatchers(HttpMethod.GET, "/api/quizzes/**").hasRole("USER")
                     .anyRequest().denyAll()
             }
