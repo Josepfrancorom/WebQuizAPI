@@ -45,6 +45,20 @@ files:
   - name: src/engine/SecurityConfig/SecurityConfig.kt
     visible: true
     learner_created: true
+  - name: src/engine/PersistenceLayer/CompletedQuizRepository.kt
+    visible: true
+    learner_created: true
+  - name: src/engine/BusinessLayer/QuizCompletion.kt
+    visible: true
+    learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24910#comment
-status: Unchecked
+status: Failed
+feedback:
+  message: |-
+    Wrong answer in test #42
+
+    GET /api/quizzes/completed?page=0 should respond with status code 200, responded: 403
+
+    Response body:
+  time: "Mon, 16 Dec 2024 14:08:32 UTC"
 record: -1

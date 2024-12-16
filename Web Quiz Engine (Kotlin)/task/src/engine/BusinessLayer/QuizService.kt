@@ -2,6 +2,8 @@ package engine.BusinessLayer
 
 import engine.PersistenceLayer.QuizRepository
 import jakarta.transaction.Transactional
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 
 
@@ -32,8 +34,13 @@ class QuizService(private val quizRepository: QuizRepository, private val userSe
         return 3
     }
 
-    fun getAllQuizzes(): List<Quiz> {
+    /*fun getAllQuizzes(): List<Quiz> {
         return quizRepository.findAll().toList()
+    }*/
+
+    fun getAllQuizzesPage(page: Int): Page<Quiz> {
+        val pageable = PageRequest.of(page, 10)
+        return quizRepository.findAll(pageable)
     }
 
     fun solveQuiz(id: Long, answer: List<Long>): Map<String, Any>? {
