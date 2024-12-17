@@ -40,9 +40,7 @@ class QuizService(
         return 3
     }
 
-    /*fun getAllQuizzes(): List<Quiz> {
-        return quizRepository.findAll().toList()
-    }*/
+
 
     fun getAllQuizzesPage(page: Int): Page<Quiz> {
         val pageable = PageRequest.of(page, 10)
@@ -79,11 +77,6 @@ class QuizService(
             }
 
 
-            /*if (answer == quiz.checkAnswer().toMutableList()) {
-                return mapOf("success" to true, "feedback" to "Congratulations, you're right!")
-            } else {
-                return mapOf("success" to false, "feedback" to "Wrong answer! Please, try again.")
-            }*/
         }
     }
 

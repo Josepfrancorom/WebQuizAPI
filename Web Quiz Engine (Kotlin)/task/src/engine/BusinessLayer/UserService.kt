@@ -29,6 +29,6 @@ class UserService(private val userRepository: UserRepository): UserDetailsServic
             val userDetails = authentication.principal as? UserAdapter
             return userDetails?.getId() // Recupera el ID del usuario autenticado
         }
-        return null // Si no está autenticado, retornamos null o manejamos el caso como prefieras
+        return null
     }
 }

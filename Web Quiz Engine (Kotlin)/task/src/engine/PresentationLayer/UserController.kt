@@ -24,17 +24,6 @@ class UserController(
     private val userService: UserService
 ) {
 
-    /*//data class RegistrationRequest(@field:val email: String, val password: String, val authority: String)
-    data class RegistrationRequest(
-        @field:Email
-        @field:NotEmpty
-        val email: String,
-
-        @field:NotEmpty
-        @field:Size(min = 5)
-        val password: String,
-
-    )*/
 
    @PostMapping("")
     fun register(@RequestBody request: Map<String, Any>): ResponseEntity<String> {
@@ -44,21 +33,21 @@ class UserController(
         }
         val email = request["email"]
         val password = request["password"]
-        println("hola")
+
         if (email !is String || !email.matches(Regex("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}\$"))) {
             println("errorEmail")
             return ResponseEntity.badRequest().build()
         }
-        println("hola1")
+
         if(userService.existUserByEmail(email)){
             return ResponseEntity.badRequest().build()
         }
-        println("hola2")
+
         // Validar que la contraseña es una cadena y tiene al menos 5 caracteres
         if (password !is String || password.length < 5) {
             return ResponseEntity.badRequest().build()
         }
-        println("hola3")
+
         val user = User()
         user.email = email
         user.password = passwordEncoder.encode(password)
@@ -68,23 +57,9 @@ class UserController(
 
     }
 
-    data class RegistrationRequest(val username: String, val password: String, val authority: String)
-    @PostMapping("/hola")
-    fun register(@RequestBody request: RegistrationRequest){
-        val user = User()
-        user.email = request.username
-        user.password = passwordEncoder.encode(request.password)
-        user.authority = "ROLE_USER"
-
-        userService.saveUser(user)
 
 
-    }
 
 
-    @GetMapping("")
-    fun getRegister(): ResponseEntity<String> {
-        return  ResponseEntity.ok("dwqd")
-    }
 
 }
