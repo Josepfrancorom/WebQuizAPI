@@ -52,13 +52,9 @@ files:
     visible: true
     learner_created: true
 feedback_link: https://hyperskill.org/learn/step/24910#comment
-status: Failed
+status: Solved
 feedback:
-  message: |-
-    Wrong answer in test #42
-
-    GET /api/quizzes/completed?page=0 should respond with status code 200, responded: 403
-
-    Response body:
-  time: "Mon, 16 Dec 2024 14:08:32 UTC"
+  message: Well done! You've finished the project. Select a new project on <a href="https://hyperskill.org/projects">Hyperskill</a>
+    to continue learning.
+  time: "Mon, 16 Dec 2024 16:27:18 UTC"
 record: -1

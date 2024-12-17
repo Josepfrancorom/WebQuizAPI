@@ -1,6 +1,7 @@
 package engine.PresentationLayer
 
 import engine.BusinessLayer.Quiz
+import engine.BusinessLayer.QuizCompletion
 import engine.BusinessLayer.QuizService
 import engine.PersistenceLayer.QuizRepository
 
@@ -88,21 +89,17 @@ class QuizController(
     @GetMapping("/completed")
     fun userCompletedQuizzes(@RequestParam page: Int): ResponseEntity<Map<String, Any>> {
         // Fetch paginated list of quizzes
-        val quizzesPage: Page<Quiz> = quizService.getAllQuizzesPage(page)
+        val completedQuizzes: Page<QuizCompletion> = quizService.getCompletedQuizzesPage(page)
 
-        // Create a response with pagination metadata and quiz content
         val response = mapOf(
-            "totalPages" to quizzesPage.totalPages,
-            "totalElements" to quizzesPage.totalElements,
-            "last" to quizzesPage.isLast,
-            "first" to quizzesPage.isFirst,
-            "sort" to quizzesPage.sort, // Incluye sort
-            "number" to quizzesPage.number,
-            "numberOfElements" to quizzesPage.numberOfElements,
-            "size" to quizzesPage.size,
-            "empty" to quizzesPage.isEmpty,
-            "pageable" to quizzesPage.pageable, // Incluye pageable
-            "content" to quizzesPage.content
+            "totalPages" to completedQuizzes.totalPages,
+            "totalElements" to completedQuizzes.totalElements,
+            "last" to completedQuizzes.isLast,
+            "first" to completedQuizzes.isFirst,
+            "empty" to completedQuizzes.isEmpty,
+            "content" to completedQuizzes.content.map {
+                mapOf("id" to it.quizId, "completedAt" to it.completedAt)
+            }
         )
 
         return ResponseEntity.ok(response)
